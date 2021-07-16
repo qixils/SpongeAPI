@@ -29,6 +29,7 @@ import org.spongepowered.api.Sponge;
 import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.block.BlockType;
 import org.spongepowered.api.registry.DefaultedRegistryReference;
+import org.spongepowered.api.registry.Registry;
 import org.spongepowered.api.registry.RegistryKey;
 import org.spongepowered.api.registry.RegistryScope;
 import org.spongepowered.api.registry.RegistryScopes;
@@ -63,6 +64,10 @@ public final class PaletteTypes {
     // @formatter:on
 
     private PaletteTypes() {
+    }
+
+    public static Registry<PaletteType<?, ?>> registry() {
+        return Sponge.game().registries().registry(RegistryTypes.PALETTE_TYPE);
     }
 
     private static <T, R> DefaultedRegistryReference<PaletteType<T, R>> key(final ResourceKey location) {

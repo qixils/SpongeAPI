@@ -30,6 +30,7 @@ import org.spongepowered.api.block.BlockState;
 import org.spongepowered.api.block.entity.BlockEntity;
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.registry.DefaultedRegistryReference;
+import org.spongepowered.api.registry.Registry;
 import org.spongepowered.api.registry.RegistryKey;
 import org.spongepowered.api.registry.RegistryScope;
 import org.spongepowered.api.registry.RegistryScopes;
@@ -149,6 +150,10 @@ public final class ChunkStates {
     // @formatter:on
 
     private ChunkStates() {
+    }
+
+    public static Registry<ChunkState> registry() {
+        return Sponge.game().registries().registry(RegistryTypes.CHUNK_STATE);
     }
 
     private static DefaultedRegistryReference<ChunkState> key(final ResourceKey location) {

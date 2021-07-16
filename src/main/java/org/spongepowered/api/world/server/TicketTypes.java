@@ -29,6 +29,7 @@ import org.spongepowered.api.Sponge;
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.event.cause.entity.SpawnType;
 import org.spongepowered.api.registry.DefaultedRegistryReference;
+import org.spongepowered.api.registry.Registry;
 import org.spongepowered.api.registry.RegistryKey;
 import org.spongepowered.api.registry.RegistryTypes;
 import org.spongepowered.api.util.Ticks;
@@ -87,6 +88,10 @@ public final class TicketTypes {
     // @formatter:on
 
     private TicketTypes() {
+    }
+
+    public static Registry<TicketType<?>> registry() {
+        return Sponge.game().registries().registry(RegistryTypes.TICKET_TYPE);
     }
 
     private static <T> DefaultedRegistryReference<TicketType<T>> key(final ResourceKey location) {
