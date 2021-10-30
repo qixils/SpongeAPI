@@ -40,13 +40,30 @@ import java.util.function.Predicate;
 public interface PackContents extends Nameable, AutoCloseable {
 
     /**
-     * Gets a {@link Resource resource} within a {@link ResourcePath path} per {@link PackType type}.
+     * Gets a {@link Resource resource} within a {@link ResourcePath path} per
+     * {@link PackType type}.
+     *
+     * <p><strong>If a resource is returned, be aware that is requires closing
+     * when you have finished working with the resource.</strong></p>
      *
      * @param type The type
      * @param path The domain named path
      * @return The resource
      */
     Optional<Resource> resource(PackType type, ResourcePath path) throws IOException;
+
+    /**
+     * Gets a {@link Resource resource} within a {@link ResourcePath path} per
+     * {@link PackType type}.
+     *
+     * <p><strong>Ensure that you close the resource once you have finished working
+     * with it!</strong></p>
+     *
+     * @param type The type
+     * @param path The domain named path
+     * @return The resource
+     */
+    Resource requireResource(PackType type, ResourcePath path) throws IOException;
 
     /**
      * Finds all the {@link ResourcePath}s in this pack matching the
@@ -79,4 +96,8 @@ public interface PackContents extends Nameable, AutoCloseable {
      * @return The set of namespaces
      */
     Set<String> namespaces(PackType type);
+
+    @Override
+    void close();
+
 }

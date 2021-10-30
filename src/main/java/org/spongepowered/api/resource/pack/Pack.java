@@ -70,4 +70,7 @@ public interface Pack extends AutoCloseable {
      * @return True if this pack has a locked order, false otherwise
      */
     boolean isLocked();
+
+    @Override
+    void close();
 }
