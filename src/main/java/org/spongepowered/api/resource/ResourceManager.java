@@ -47,7 +47,7 @@ public interface ResourceManager {
      * @param path The path to the resource
      * @return The resource
      * @throws IOException If the resource could not be read
-     * @throws java.io.FileNotFoundException If the file does not exist
+     * @throws FileNotFoundException If the file does not exist
      */
     Resource load(ResourcePath path) throws IOException;
 

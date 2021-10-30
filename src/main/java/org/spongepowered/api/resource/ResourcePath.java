@@ -43,28 +43,28 @@ public interface ResourcePath extends Comparable<ResourcePath> {
      * Creates a resource path.
      *
      * @param namespace The namespace
-     * @param value     The value
+     * @param path      The path within the supplied namespace
      * @return A new resource path
      * @see ResourceKey#of(String, String)
      */
-    static ResourcePath of(final String namespace, final String value) {
-        return ResourcePath.of(ResourceKey.of(namespace, value));
+    static ResourcePath of(final String namespace, final String path) {
+        return ResourcePath.of(ResourceKey.of(namespace, path));
     }
 
     /**
      * Creates a resource path from a plugin container.
      *
      * @param container The plugin container
-     * @param value     The value
+     * @param path      The path within the supplied namespace
      * @return A new resource path
      * @see ResourceKey#of(PluginContainer, String)
      */
-    static ResourcePath of(final PluginContainer container, final String value) {
-        return ResourcePath.of(ResourceKey.of(container, value));
+    static ResourcePath of(final PluginContainer container, final String path) {
+        return ResourcePath.of(ResourceKey.of(container, path));
     }
 
     /**
-     * Parses a path from a string.
+     * Parses a path from a string, generally formatted "namespace:path".
      *
      * <p>If no namespace is found in {@code value} then
      * {@code minecraft} will be the namespace.</p>
